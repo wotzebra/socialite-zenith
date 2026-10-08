@@ -1,0 +1,57 @@
+{
+    "name": "wotz/socialite-zenith",
+    "description": "Laravel Socialite provider for Zenith, the WOTZ OAuth2 server",
+    "keywords": [
+        "who owns the zebra",
+        "zenith",
+        "laravel",
+        "socialite",
+        "oauth"
+    ],
+    "homepage": "https://github.com/wotzebra/socialite-zenith",
+    "license": "MIT",
+    "require": {
+        "php": "^8.2",
+        "illuminate/http": "^11.0|^12.0|^13.0",
+        "illuminate/support": "^11.0|^12.0|^13.0",
+        "laravel/socialite": "^5.5"
+    },
+    "require-dev": {
+        "laravel/pint": "^1.0",
+        "orchestra/testbench": "^9.0|^10.0|^11.0",
+        "pestphp/pest": "^3.0|^4.0",
+        "pestphp/pest-plugin-laravel": "^3.0|^4.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Wotz\\SocialiteZenith\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Wotz\\SocialiteZenith\\Tests\\": "tests"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Wotz\\SocialiteZenith\\SocialiteZenithServiceProvider"
+            ]
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/pest",
+        "format": "vendor/bin/pint"
+    },
+    "support": {
+        "email": "info@whoownsthezebra.be"
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
