@@ -15,9 +15,25 @@ jobs:
         php: [8.2, 8.3, 8.4, 8.5, 8.6]
         laravel: [11.*, 12.*, 13.*]
         stability: [prefer-stable]
+        include:
+          - php: 8.2
+            pest: ^3.0
+          - php: 8.3
+            pest: ^4.0
+          - php: 8.4
+            pest: ^4.0
+          - php: 8.5
+            pest: ^4.0
+          - php: 8.6
+            pest: ^5.0
         exclude:
           - php: 8.2
             laravel: 13.*
+          # Pest 4's ParaTest does not support PHP 8.6; Testbench 9 and 10 cannot use Pest 5's PHPUnit.
+          - php: 8.6
+            laravel: 11.*
+          - php: 8.6
+            laravel: 12.*
 
     name: P${{ matrix.php }} - L${{ matrix.laravel }} - ${{ matrix.stability }}
 
@@ -40,6 +56,7 @@ jobs:
       - name: Install dependencies
         run: |
           composer require "laravel/framework:${{ matrix.laravel }}" --no-interaction --no-update
+          composer require "pestphp/pest:${{ matrix.pest }}" "pestphp/pest-plugin-laravel:${{ matrix.pest }}" --dev --no-interaction --no-update
           composer update --${{ matrix.stability }} --prefer-dist --no-interaction
 
       - name: Execute tests
